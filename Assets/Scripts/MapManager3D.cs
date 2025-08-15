@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class MapManager3D : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class MapManager3D : MonoBehaviour
     public float cameraDistance = 5f;
     public float cameraHeight = 3f;
     public float cameraMoveSpeed = 2f;
+    public AnimationCurve easingCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f); // Кастомная кривая для easing (можно настроить в инспекторе)
+    public float swayAmplitude = 0.5f; // Амплитуда покачивания (степень колебания)
+    public float swayFrequency = 1f;  // Частота покачивания
 
     [Header("UI Panel")]
     public GameObject infoPanel;        // Канвас/панель с инфой
@@ -48,7 +52,7 @@ public class MapManager3D : MonoBehaviour
         StartCoroutine(MoveCameraToRegion(region));
     }
 
-    private System.Collections.IEnumerator MoveCameraToRegion(Region3D region)
+    private IEnumerator MoveCameraToRegion(Region3D region)
     {
         Vector3 targetPos = region.GetCenter() + new Vector3(0, cameraHeight, -cameraDistance);
         Quaternion targetRot = Quaternion.LookRotation(region.GetCenter() - targetPos);
@@ -56,14 +60,37 @@ public class MapManager3D : MonoBehaviour
         Vector3 startPos = mainCamera.transform.position;
         Quaternion startRot = mainCamera.transform.rotation;
 
-        float t = 0f;
-        while (t < 1f)
+        float duration = 2f / cameraMoveSpeed; // Общая длительность анимации
+        float elapsed = 0f;
+
+        while (elapsed < duration)
         {
-            t += Time.deltaTime * cameraMoveSpeed;
-            mainCamera.transform.position = Vector3.Lerp(startPos, targetPos, t);
-            mainCamera.transform.rotation = Quaternion.Slerp(startRot, targetRot, t);
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            float easedT = easingCurve.Evaluate(t); // Применяем easing кривую для плавности
+
+            // Позиция с easing и нелинейной траекторией для эффекта "падения" (лёгкий изгиб вниз)
+            Vector3 currentPos = Vector3.Lerp(startPos, targetPos, easedT);
+            // Добавляем вертикальный "dip" для ощущения падения: небольшой прогиб вниз в середине анимации
+            float dipAmount = Mathf.Sin(t * Mathf.PI) * (cameraHeight * 1f); // Синусоидальный прогиб, max в середине
+            currentPos.y -= dipAmount; // Опускаем позицию вниз для эффекта падения
+
+            // Добавляем легкое покачивание (sway) как у пера: синусоидальное колебание по оси X и Z
+            float swayOffset = Mathf.Sin(t * Mathf.PI * swayFrequency) * swayAmplitude * (1f - easedT); // Уменьшаем амплитуду к концу
+            currentPos += mainCamera.transform.right * swayOffset * 2f; // Покачивание влево-вправо
+            currentPos += mainCamera.transform.forward * swayOffset * 0.5f; // Легкое вперед-назад
+
+            mainCamera.transform.position = currentPos;
+
+            // Ротация с easing
+            mainCamera.transform.rotation = Quaternion.Slerp(startRot, targetRot, easedT);
+
             yield return null;
         }
+
+        // Зафиксировать финальную позицию и ротацию
+        mainCamera.transform.position = targetPos;
+        mainCamera.transform.rotation = targetRot;
 
         // После движения камеры — показать панель
         ShowRegionInfo(region);
@@ -84,25 +111,34 @@ public class MapManager3D : MonoBehaviour
         if (currentRegion != null)
             currentRegion.Highlight(false);
 
-            UIManager.Instance.ClosePanel();
+        UIManager.Instance.ClosePanel();
 
         // Вернуть камеру в исходное положение
         StopAllCoroutines();
         StartCoroutine(ReturnCameraToDefault());
     }
 
-    private System.Collections.IEnumerator ReturnCameraToDefault()
+    private IEnumerator ReturnCameraToDefault()
     {
         Vector3 startPos = mainCamera.transform.position;
         Quaternion startRot = mainCamera.transform.rotation;
 
-        float t = 0f;
-        while (t < 1f)
+        float duration = 1f / cameraMoveSpeed;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
         {
-            t += Time.deltaTime * cameraMoveSpeed;
-            mainCamera.transform.position = Vector3.Lerp(startPos, defaultCamPos, t);
-            mainCamera.transform.rotation = Quaternion.Slerp(startRot, defaultCamRot, t);
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            float easedT = easingCurve.Evaluate(t);
+
+            mainCamera.transform.position = Vector3.Lerp(startPos, defaultCamPos, easedT);
+            mainCamera.transform.rotation = Quaternion.Slerp(startRot, defaultCamRot, easedT);
+
             yield return null;
         }
+
+        mainCamera.transform.position = defaultCamPos;
+        mainCamera.transform.rotation = defaultCamRot;
     }
 }
