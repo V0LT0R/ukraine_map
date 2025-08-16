@@ -6,6 +6,7 @@ public class Region3D : MonoBehaviour
 
     private Renderer rend;
     private Color originalColor;
+    public Color SelectedColor;
 
     void Awake()
     {
@@ -18,7 +19,7 @@ public class Region3D : MonoBehaviour
     public void Highlight(bool enable)
     {
         if (rend != null)
-            rend.material.color = enable ? Color.yellow : originalColor;
+            rend.material.color = enable ? SelectedColor : originalColor;
     }
 
     // Получение центра объекта
