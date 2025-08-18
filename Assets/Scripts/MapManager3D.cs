@@ -20,7 +20,16 @@ public class MapManager3D : MonoBehaviour
     public GameObject infoPanel;        // Канвас/панель с инфой
     public Text regionTitle;        // Название области
     public Text regionDescription;  // Описание области
+    public Transform scrollContent;       // Контейнер для кнопок событий
     public Button closeButton;          // Кнопка закрытия
+    public Button EventButtonPrefab;          // Кнопка закрытия
+
+
+
+    [Header("Event Panel")]
+    public GameObject eventPanel;         // Панель события
+    public Text eventTitle;
+    public Text eventDescription;
 
     private Region3D currentRegion;
     private Vector3 defaultCamPos;
@@ -33,6 +42,7 @@ public class MapManager3D : MonoBehaviour
         defaultCamRot = mainCamera.transform.rotation;
 
         infoPanel.SetActive(false); // Панель изначально скрыта
+        eventPanel.SetActive(false); // Панель изначально скрыта
         closeButton.onClick.AddListener(CloseRegionInfo);
     }
 
@@ -100,6 +110,38 @@ public class MapManager3D : MonoBehaviour
     {
         regionTitle.text = region.regionName;
         regionDescription.text = $"Описание области: {region.regionName}\nЗдесь можно вывести население, площадь и т.д.";
+        infoPanel.SetActive(true);
+
+        // Очистить старые кнопки
+        foreach (Transform child in scrollContent)
+            Destroy(child.gameObject);
+
+        // Создать новые кнопки событий
+        foreach (var ev in region.events)
+        {
+            Button btnObj = Instantiate(EventButtonPrefab, scrollContent);
+            var btnText = btnObj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            btnText.text = ev.eventName;
+
+            var btn = btnObj.GetComponent<Button>();
+            btn.onClick.AddListener(() => ShowEventInfo(ev));
+        }
+
+        UIManager.Instance.OpenPanel();
+    }
+
+    private void ShowEventInfo(Region3D.RegionEvent ev)
+    {
+        eventTitle.text = ev.eventName;
+        eventDescription.text = ev.eventDescription;
+        
+        eventPanel.SetActive(true);
+        infoPanel.SetActive(false);
+    }
+
+    public void CloseEventInfo()
+    {
+        eventPanel.SetActive(false);
         infoPanel.SetActive(true);
     }
 

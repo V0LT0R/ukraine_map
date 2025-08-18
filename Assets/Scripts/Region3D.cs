@@ -1,8 +1,20 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Region3D : MonoBehaviour
 {
+
+    [Serializable]
+    public class RegionEvent
+    {
+        public string eventName;
+        public string eventDescription;
+    }
+
     public string regionName; // Название региона
+
+    public List<RegionEvent> events;
 
     private Renderer rend;
     private Color originalColor;
