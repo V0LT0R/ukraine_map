@@ -2,10 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MapManager3D : MonoBehaviour
 {
     public static MapManager3D Instance { get; private set; }
+
+    public List<Region3D> regions;
 
     [Header("Camera Settings")]
     public Camera mainCamera;
@@ -20,16 +23,18 @@ public class MapManager3D : MonoBehaviour
     public GameObject infoPanel;        // Канвас/панель с инфой
     public Text regionTitle;        // Название области
     public Text regionDescription;  // Описание области
-    public Transform scrollContent;       // Контейнер для кнопок событий
     public Button closeButton;          // Кнопка закрытия
     public Button EventButtonPrefab;          // Кнопка закрытия
 
 
 
-    [Header("Event Panel")]
-    public GameObject eventPanel;         // Панель события
-    public Text eventTitle;
-    public Text eventDescription;
+    private Dictionary<string, List<string>> regionGroups = new Dictionary<string, List<string>>()
+    {
+        { "kyiv", new List<string> { "kyiv-city" } },
+        { "kyiv-city", new List<string> { "kyiv" } },
+        
+    };
+
 
     private Region3D currentRegion;
     private Vector3 defaultCamPos;
@@ -42,8 +47,6 @@ public class MapManager3D : MonoBehaviour
         defaultCamRot = mainCamera.transform.rotation;
 
         infoPanel.SetActive(false); // Панель изначально скрыта
-        eventPanel.SetActive(false); // Панель изначально скрыта
-        closeButton.onClick.AddListener(CloseRegionInfo);
     }
 
     public void SelectRegion(Region3D region)
@@ -54,13 +57,31 @@ public class MapManager3D : MonoBehaviour
 
         // Подсветить новую
         currentRegion = region;
+
         currentRegion.Highlight(true);
-        UIManager.Instance.OpenPanel();
+        if (regionGroups.ContainsKey(region.regionName))
+        {
+            foreach (string linkedRegionName in regionGroups[region.regionName])
+            {
+                Region3D linked = regions.Find(r => r.regionName == linkedRegionName);
+                if (linked != null)
+                {
+                    linked.Highlight(true);
+                }
+            }
+        }
+        List<GameObject> slides = (region.slidePrefabs != null && region.slidePrefabs.Count > 0)
+            ? region.slidePrefabs
+            : new List<GameObject>(); // пустой список — UIManager корректно обработает
+
+        UIManager.Instance.OpenPanel(slides);
 
         // Остановить корутины камеры и начать новую
         StopAllCoroutines();
         StartCoroutine(MoveCameraToRegion(region));
     }
+
+    
 
     private IEnumerator MoveCameraToRegion(Region3D region)
     {
@@ -109,40 +130,12 @@ public class MapManager3D : MonoBehaviour
     private void ShowRegionInfo(Region3D region)
     {
         regionTitle.text = region.regionName;
-        regionDescription.text = $"Описание области: {region.regionName}\nЗдесь можно вывести население, площадь и т.д.";
         infoPanel.SetActive(true);
+        List<GameObject> slides = (region.slidePrefabs != null && region.slidePrefabs.Count > 0)
+          ? region.slidePrefabs
+          : new List<GameObject>(); // пустой список — UIManager корректно обработает
 
-        // Очистить старые кнопки
-        foreach (Transform child in scrollContent)
-            Destroy(child.gameObject);
-
-        // Создать новые кнопки событий
-        foreach (var ev in region.events)
-        {
-            Button btnObj = Instantiate(EventButtonPrefab, scrollContent);
-            var btnText = btnObj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-            btnText.text = ev.eventName;
-
-            var btn = btnObj.GetComponent<Button>();
-            btn.onClick.AddListener(() => ShowEventInfo(ev));
-        }
-
-        UIManager.Instance.OpenPanel();
-    }
-
-    private void ShowEventInfo(Region3D.RegionEvent ev)
-    {
-        eventTitle.text = ev.eventName;
-        eventDescription.text = ev.eventDescription;
-        
-        eventPanel.SetActive(true);
-        infoPanel.SetActive(false);
-    }
-
-    public void CloseEventInfo()
-    {
-        eventPanel.SetActive(false);
-        infoPanel.SetActive(true);
+        UIManager.Instance.OpenPanel(slides);
     }
 
     public void CloseRegionInfo()

@@ -1,20 +1,13 @@
-using System;
+п»їusing System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Region3D : MonoBehaviour
 {
 
-    [Serializable]
-    public class RegionEvent
-    {
-        public string eventName;
-        public string eventDescription;
-    }
+    public List<GameObject> slidePrefabs = new List<GameObject>();
 
-    public string regionName; // Название региона
-
-    public List<RegionEvent> events;
+    public string regionName; // РќР°Р·РІР°РЅРёРµ СЂРµРіРёРѕРЅР° (РјРѕР¶РµС‚ РЅРµ СЃРѕРІРїР°РґР°С‚СЊ СЃ GameObject.name)
 
     private Renderer rend;
     private Color originalColor;
@@ -22,35 +15,61 @@ public class Region3D : MonoBehaviour
 
     void Awake()
     {
+        // Р•СЃР»Рё СЂРµРЅРґРµСЂРµСЂ РЅР° СЌС‚РѕРј РѕР±СЉРµРєС‚Рµ РёР»Рё РґРѕС‡РµСЂРЅРµРј
         rend = GetComponent<Renderer>();
+        if (rend == null)
+            rend = GetComponentInChildren<Renderer>();
+
         if (rend != null)
             originalColor = rend.material.color;
     }
 
-    // Подсветка региона
-    public void Highlight(bool enable)
+    // РџРѕРґСЃРІРµС‚РєР° СЂРµРіРёРѕРЅР°
+    public void Highlight(bool enable, bool isLinked = false)
     {
         if (rend != null)
             rend.material.color = enable ? SelectedColor : originalColor;
+
+        // Р•СЃР»Рё СЌС‚Рѕ РІС‹Р·РѕРІ РёР· РѕСЃРЅРѕРІРЅРѕРіРѕ РѕР±СЉРµРєС‚Р° вЂ” РІРєР»СЋС‡Р°РµРј РїРѕРґСЃРІРµС‚РєСѓ СЃРІСЏР·Р°РЅРЅРѕРіРѕ
+        if (!isLinked)
+        {
+            if (gameObject.name == "Kyiv")
+            {
+                GameObject linked = GameObject.Find("Kyiv-City");
+                if (linked != null)
+                {
+                    Region3D r = linked.GetComponent<Region3D>();
+                    if (r != null)
+                        r.Highlight(enable, true); // С„Р»Р°Р¶РѕРє true = РЅРµ РІС‹Р·С‹РІР°С‚СЊ РѕР±СЂР°С‚РЅРѕ
+                }
+            }
+            else if (gameObject.name == "Kyiv-City")
+            {
+                GameObject linked = GameObject.Find("Kyiv");
+                if (linked != null)
+                {
+                    Region3D r = linked.GetComponent<Region3D>();
+                    if (r != null)
+                        r.Highlight(enable, true); // С„Р»Р°Р¶РѕРє true = РЅРµ РІС‹Р·С‹РІР°С‚СЊ РѕР±СЂР°С‚РЅРѕ
+                }
+            }
+        }
     }
 
-    // Получение центра объекта
+    // РџРѕР»СѓС‡РµРЅРёРµ С†РµРЅС‚СЂР° РѕР±СЉРµРєС‚Р°
     public Vector3 GetCenter()
     {
-        return GetComponent<Renderer>().bounds.center;
+        if (rend != null)
+            return rend.bounds.center;
+        return transform.position;
     }
 
-    // Клик по региону
+    // РљР»РёРє РїРѕ СЂРµРіРёРѕРЅСѓ
     void OnMouseDown()
     {
-        // Если панель открыта — клик игнорируется
         if (UIManager.Instance.isPanelOpen)
-
             return;
 
-        Debug.Log("Клик по региону: " + regionName);
-
-        // Пример: отправляем в MapManager3D
         MapManager3D.Instance.SelectRegion(this);
     }
 }
