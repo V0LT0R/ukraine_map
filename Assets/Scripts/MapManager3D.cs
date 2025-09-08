@@ -32,7 +32,7 @@ public class MapManager3D : MonoBehaviour
     {
         { "kyiv", new List<string> { "kyiv-city" } },
         { "kyiv-city", new List<string> { "kyiv" } },
-        
+
     };
 
 
@@ -51,14 +51,28 @@ public class MapManager3D : MonoBehaviour
 
     public void SelectRegion(Region3D region)
     {
-        // Снять подсветку с предыдущей области
+        // Снять подсветку и опустить предыдущую область (и связанные)
         if (currentRegion != null)
+        {
             currentRegion.Highlight(false);
+            currentRegion.SetRaised(false);
 
-        // Подсветить новую
+            if (regionGroups.ContainsKey(currentRegion.regionName))
+            {
+                foreach (string linkedRegionName in regionGroups[currentRegion.regionName])
+                {
+                    Region3D linkedPrev = regions.Find(r => r.regionName == linkedRegionName);
+                    if (linkedPrev != null) linkedPrev.SetRaised(false);
+                }
+            }
+        }
+
+        // Подсветить и поднять новую
         currentRegion = region;
 
         currentRegion.Highlight(true);
+        currentRegion.SetRaised(true);
+
         if (regionGroups.ContainsKey(region.regionName))
         {
             foreach (string linkedRegionName in regionGroups[region.regionName])
@@ -67,21 +81,25 @@ public class MapManager3D : MonoBehaviour
                 if (linked != null)
                 {
                     linked.Highlight(true);
+                    linked.SetRaised(true);
                 }
             }
         }
+
+        // Слайды для UI
         List<GameObject> slides = (region.slidePrefabs != null && region.slidePrefabs.Count > 0)
             ? region.slidePrefabs
-            : new List<GameObject>(); // пустой список — UIManager корректно обработает
+            : new List<GameObject>();
 
         UIManager.Instance.OpenPanel(slides);
 
-        // Остановить корутины камеры и начать новую
+        // Камера
         StopAllCoroutines();
         StartCoroutine(MoveCameraToRegion(region));
     }
 
-    
+
+
 
     private IEnumerator MoveCameraToRegion(Region3D region)
     {
@@ -99,7 +117,6 @@ public class MapManager3D : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = elapsed / duration;
             float easedT = easingCurve.Evaluate(t); // Применяем easing кривую для плавности
-
             // Позиция с easing и нелинейной траекторией для эффекта "падения" (лёгкий изгиб вниз)
             Vector3 currentPos = Vector3.Lerp(startPos, targetPos, easedT);
             // Добавляем вертикальный "dip" для ощущения падения: небольшой прогиб вниз в середине анимации
@@ -142,9 +159,21 @@ public class MapManager3D : MonoBehaviour
     {
         infoPanel.SetActive(false);
 
-        // Снять подсветку
+        // Снять подсветку и опустить текущую область
         if (currentRegion != null)
+        {
             currentRegion.Highlight(false);
+            currentRegion.SetRaised(false);
+
+            if (regionGroups.ContainsKey(currentRegion.regionName))
+            {
+                foreach (string linkedRegionName in regionGroups[currentRegion.regionName])
+                {
+                    Region3D linked = regions.Find(r => r.regionName == linkedRegionName);
+                    if (linked != null) linked.SetRaised(false);
+                }
+            }
+        }
 
         UIManager.Instance.ClosePanel();
 
@@ -152,6 +181,7 @@ public class MapManager3D : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(ReturnCameraToDefault());
     }
+
 
     private IEnumerator ReturnCameraToDefault()
     {

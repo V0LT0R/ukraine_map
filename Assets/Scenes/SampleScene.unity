@@ -137,8 +137,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: sumy
+  regionName: Sumy region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &14104391
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -327,8 +329,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Lutsk
+  regionName: Volyn Region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &90408891
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -423,8 +427,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Zaporizhia
+  regionName: Zaporizhia region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &147362309
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -465,8 +471,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Donetsk
+  regionName: Donetsk region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &251514669
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -507,8 +515,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Cherkasy
+  regionName: Cherkasy region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &264732940
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -549,8 +559,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Kropyvnytskyi
+  regionName: Kirovohrad region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &288076346
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -663,8 +675,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Chernivtsi
+  regionName: Chernivtsi region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &321427448
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -952,8 +966,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Poltava
+  regionName: Poltava region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &393100769
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1348,8 +1364,10 @@ MonoBehaviour:
   - {fileID: 3093224095688620712, guid: d85085a51bf87e740bd80b2e28687ae8, type: 3}
   - {fileID: 3168436413851600983, guid: 68db2ea08267ce344bb9fcc8e7b70441, type: 3}
   - {fileID: 4825886333037425097, guid: 9e7423f40f08a8c41aa346aba42be301, type: 3}
-  regionName: Kyiv
+  regionName: Kyiv region
   SelectedColor: {r: 0.3584906, g: 0.33493742, b: 0.028746892, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!1 &524230657 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -882153425070969310, guid: e0eb99ebcc07b164a894cb137f2ef21e, type: 3}
@@ -1368,8 +1386,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Khmelnytskyi
+  regionName: Khmelnytskyi region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &524230662
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1437,8 +1457,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Kharkiv
+  regionName: Kharkiv region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &617767333
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2358,8 +2380,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Vinnytsia
+  regionName: Vinnytsia region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &761421881
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2454,8 +2478,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Odese
+  regionName: Odesa region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &783967577
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3016,7 +3042,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &920599700
 Canvas:
   m_ObjectHideFlags: 0
@@ -3026,7 +3052,7 @@ Canvas:
   m_GameObject: {fileID: 920599697}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 2
+  m_RenderMode: 1
   m_Camera: {fileID: 330585545}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -3048,8 +3074,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920599697}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 44.99}
-  m_LocalScale: {x: 0.10691672, y: 0.10691672, z: 0.10691672}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2010523601}
@@ -3066,9 +3092,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 4.770233, y: 54.2321}
-  m_SizeDelta: {x: 1920.0001, y: 1080}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &939249841 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5360680894185427596, guid: e0eb99ebcc07b164a894cb137f2ef21e, type: 3}
@@ -3247,8 +3273,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Sevastopol
+  regionName: Sevastopol region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &1040880817
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3448,8 +3476,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Rivne
+  regionName: Rivne region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &1155297344
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3490,8 +3520,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Mykolaiv
+  regionName: Mykolaiv region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &1157577696
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3559,8 +3591,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Kherson
+  regionName: Kherson region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &1250280400
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3628,8 +3662,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Ternopil
+  regionName: Ternopil region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &1279517789
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3881,8 +3917,10 @@ MonoBehaviour:
   - {fileID: 3093224095688620712, guid: d85085a51bf87e740bd80b2e28687ae8, type: 3}
   - {fileID: 3168436413851600983, guid: 68db2ea08267ce344bb9fcc8e7b70441, type: 3}
   - {fileID: 4825886333037425097, guid: 9e7423f40f08a8c41aa346aba42be301, type: 3}
-  regionName: Kyiv
+  regionName: Kyiv region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!1 &1319986241
 GameObject:
   m_ObjectHideFlags: 0
@@ -4239,8 +4277,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Crimea
+  regionName: Crimea region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &1567259947
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4432,8 +4472,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Lviv
+  regionName: Lviv region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &1661327068
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4546,8 +4588,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Ivano-Frankivsk
+  regionName: Ivano-Frankivsk region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &1755628826
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4642,8 +4686,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Dnipro
+  regionName: Dnipro region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &1778572972
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5003,6 +5049,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9162161032004199605, guid: e0eb99ebcc07b164a894cb137f2ef21e, type: 3}
+      propertyPath: m_Name
+      value: Odesa
+      objectReference: {fileID: 0}
     - target: {fileID: -8784747506267710087, guid: e0eb99ebcc07b164a894cb137f2ef21e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -5207,6 +5257,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.1412
       objectReference: {fileID: 0}
+    - target: {fileID: -5918278102963692697, guid: e0eb99ebcc07b164a894cb137f2ef21e, type: 3}
+      propertyPath: m_Name
+      value: Kirivohrad
+      objectReference: {fileID: 0}
     - target: {fileID: -5432529880466179010, guid: e0eb99ebcc07b164a894cb137f2ef21e, type: 3}
       propertyPath: m_LocalScale.z
       value: 6.4130425
@@ -5291,6 +5345,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.1412
       objectReference: {fileID: 0}
+    - target: {fileID: -3782733262444381899, guid: e0eb99ebcc07b164a894cb137f2ef21e, type: 3}
+      propertyPath: m_Name
+      value: Zakarpattia
+      objectReference: {fileID: 0}
     - target: {fileID: -3351513595634864539, guid: e0eb99ebcc07b164a894cb137f2ef21e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -5330,6 +5388,10 @@ PrefabInstance:
     - target: {fileID: -2156507217435084082, guid: e0eb99ebcc07b164a894cb137f2ef21e, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.1412
+      objectReference: {fileID: 0}
+    - target: {fileID: -2131184965837584868, guid: e0eb99ebcc07b164a894cb137f2ef21e, type: 3}
+      propertyPath: m_Name
+      value: Volyn
       objectReference: {fileID: 0}
     - target: {fileID: -1949751367129383790, guid: e0eb99ebcc07b164a894cb137f2ef21e, type: 3}
       propertyPath: m_LocalScale.z
@@ -5957,8 +6019,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Chernihiv
+  regionName: Chernihiv region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &1942785590
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6098,8 +6162,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Luhansk
+  regionName: Luhansk region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &2014233232
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6402,8 +6468,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Zhytomyr
+  regionName: Zhytomyr region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &2097802531
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6444,8 +6512,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slidePrefabs: []
-  regionName: Uzhhorod
+  regionName: Zakarpattia region
   SelectedColor: {r: 0.24705882, g: 0.23137255, b: 0.02745098, a: 0}
+  liftHeight: 0.13
+  liftSpeed: 1.2
 --- !u!64 &2123405198
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6548,6 +6618,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1022230950}
     m_Modifications:
+    - target: {fileID: 395358656378330879, guid: fdb588931181b4841b84510f052b21e4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 395358656378330879, guid: fdb588931181b4841b84510f052b21e4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -789.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 395358656378330879, guid: fdb588931181b4841b84510f052b21e4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -84.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113526900084240635, guid: fdb588931181b4841b84510f052b21e4, type: 3}
+      propertyPath: m_Name
+      value: Volyn
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437298368726061094, guid: fdb588931181b4841b84510f052b21e4, type: 3}
+      propertyPath: m_Text
+      value: "Kirovohrad\n\u2022"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1729137284158840243, guid: fdb588931181b4841b84510f052b21e4, type: 3}
+      propertyPath: m_Text
+      value: "Volyn\n\u2022"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265191534445896969, guid: fdb588931181b4841b84510f052b21e4, type: 3}
+      propertyPath: m_Name
+      value: Zakarpattia
+      objectReference: {fileID: 0}
     - target: {fileID: 3477148001198703329, guid: fdb588931181b4841b84510f052b21e4, type: 3}
       propertyPath: m_LocalPosition.z
       value: -7.9
@@ -6560,9 +6658,33 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 209.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3880501578475591234, guid: fdb588931181b4841b84510f052b21e4, type: 3}
+      propertyPath: m_Text
+      value: "\u2022\nZakarpattia"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286332306962877962, guid: fdb588931181b4841b84510f052b21e4, type: 3}
+      propertyPath: m_Text
+      value: "Odesa \u2022"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091603073387657955, guid: fdb588931181b4841b84510f052b21e4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091603073387657955, guid: fdb588931181b4841b84510f052b21e4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -673.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091603073387657955, guid: fdb588931181b4841b84510f052b21e4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -8.9
+      objectReference: {fileID: 0}
     - target: {fileID: 8376311354368345400, guid: fdb588931181b4841b84510f052b21e4, type: 3}
       propertyPath: m_Name
       value: Canvas with names of regions
+      objectReference: {fileID: 0}
+    - target: {fileID: 8503476340664721205, guid: fdb588931181b4841b84510f052b21e4, type: 3}
+      propertyPath: m_Name
+      value: Kirovohrad
       objectReference: {fileID: 0}
     - target: {fileID: 8957144600823565109, guid: fdb588931181b4841b84510f052b21e4, type: 3}
       propertyPath: m_Pivot.x
@@ -6606,7 +6728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8957144600823565109, guid: fdb588931181b4841b84510f052b21e4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.19880101
+      value: 0.1988
       objectReference: {fileID: 0}
     - target: {fileID: 8957144600823565109, guid: fdb588931181b4841b84510f052b21e4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6630,7 +6752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8957144600823565109, guid: fdb588931181b4841b84510f052b21e4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.9709
+      value: 2.9723
       objectReference: {fileID: 0}
     - target: {fileID: 8957144600823565109, guid: fdb588931181b4841b84510f052b21e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
