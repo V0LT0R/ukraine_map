@@ -146,7 +146,7 @@ public class MapManager3D : MonoBehaviour
 
     private void ShowRegionInfo(Region3D region)
     {
-        regionTitle.text = region.regionName;
+        //regionTitle.text = region.regionName;
         infoPanel.SetActive(true);
         List<GameObject> slides = (region.slidePrefabs != null && region.slidePrefabs.Count > 0)
           ? region.slidePrefabs
